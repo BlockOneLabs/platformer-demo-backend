@@ -9,11 +9,9 @@ let client = new Redis(connectionString);
 
 export default async function handler(req, res) {
   const body = req.body
-  console.log(JSON.stringify(body))
   const walletAddress = body.walletAddress
   const params = body.params
   const userId = params.userId
-  console.log(userId, walletAddress)
   await client.set(userId, walletAddress);
   res.status(200).json({
     walletAddress: walletAddress || "NOT FOUND",
