@@ -1,7 +1,7 @@
 import client from "./utils/redisClient";
 
 const NFT_BALANCE_ENDPOINT_URL =
-  "http://localhost:3005/api/nft/balance?";
+  "https://api.blockonelabs.com/api/nft/balance?";
 
 const accessKey = process.env.ACCESS_KEY;
 const chainId = "0x61" // BSC testnet
