@@ -26,7 +26,6 @@ export default async function handler(req, res) {
   console.log("nftBalanceResponse")
   console.log(JSON.stringify(nftBalanceResponse))
   const nftBalance = nftBalanceResponse.map(nft => {
-      console.log(JSON.stringify(nft))
       const name = nft.name
       return {
           id: nft.id,
