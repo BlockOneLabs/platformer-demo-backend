@@ -1,7 +1,7 @@
 import client from "./utils/redisClient";
 
 const NFT_BALANCE_ENDPOINT_URL =
-  "https://api.blockonelabs.com/api/nft/balance?";
+  "http://localhost:3005/api/nft/balance?";
 
 const accessKey = process.env.ACCESS_KEY;
 const chainId = "0x61" // BSC testnet
@@ -23,17 +23,14 @@ export default async function handler(req, res) {
     },
   });
   const nftBalanceResponse = await response.json();
+  console.log("nftBalanceResponse")
   console.log(JSON.stringify(nftBalanceResponse))
-  const nftBalance = nftBalanceResponse.result.map(nft => {
-      const metadata = JSON.parse(nft.metadata)
-      const attributes = metadata.attributes
-      const name = metadata.name
-      const description = metadata.description
+  const nftBalance = nftBalanceResponse.map(nft => {
+      console.log(JSON.stringify(nft))
+      const name = nft.name
       return {
-          id: nft.token_id,
+          id: nft.id,
           name,
-          description,
-          attributes
       }
   })
   res.status(200).json(nftBalance);
