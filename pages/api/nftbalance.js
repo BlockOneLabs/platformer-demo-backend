@@ -1,9 +1,9 @@
 import client from "./utils/redisClient";
-import {API_ENDPOINT_URL, accessKey, chainId} from "./utils/constants"
+import {API_ENDPOINT_URL, accessKey, chainId, nftAddress} from "./utils/constants"
+import setResponseHeaders from "./utils/headers";
 
 const NFT_BALANCE_ENDPOINT_URL = `${API_ENDPOINT_URL}/nft/balance?`;
 
-const nftAddress = "0xf009f8d7fb3d5934da6ddbe0e5a4695f5f4c1e53";
 
 export default async function handler(req, res) {
 
@@ -35,12 +35,6 @@ export default async function handler(req, res) {
     };
   });
 
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization, x-api-key"
-  );
-  
+  setResponseHeaders(res)
   res.status(200).json(nftBalance);
 }
