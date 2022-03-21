@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     "traits":[
         {
             "trait_type":"image",
-            "value": "https://img.freepik.com/free-vector/modern-business-start-up-background_1361-1518.jpg?t=st=1647903361~exp=1647903961~hmac=5892b71636e853a9c99dfeae9667ade8e7015035b14d1e9df5a7b9a836779a3c&w=996"
+            "value": "https://www.blockonelabs.com/assets/images/demo/used-star.png"
         },
         {
             "trait_type":"used",
@@ -39,9 +39,8 @@ export default async function handler(req, res) {
     },
   });
 
-  const jsonResponse = await response.text();
+  const jsonResponse = await response.json();
 
-  console.log(`jsonResponse ${jsonResponse}`)
   setResponseHeaders(res);
   res.status(200).json(jsonResponse);
 }
