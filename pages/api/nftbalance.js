@@ -1,14 +1,13 @@
 import client from "./utils/redisClient";
+import {API_ENDPOINT_URL, accessKey, chainId} from "./utils/constants"
 
-const NFT_BALANCE_ENDPOINT_URL =
-  "https://api.blockonelabs.com/api/nft/balance?";
+const NFT_BALANCE_ENDPOINT_URL = `${API_ENDPOINT_URL}/nft/balance?`;
 
-const accessKey = process.env.ACCESS_KEY;
-const chainId = "0x61"; // BSC testnet
-const nftAddress = "";
+const nftAddress = "0xf009f8d7fb3d5934da6ddbe0e5a4695f5f4c1e53";
 
 export default async function handler(req, res) {
 
+  console.log("NFT_BALANCE_ENDPOINT_URL " + NFT_BALANCE_ENDPOINT_URL)
   const { userId } = req.query;
   const wallet = await client.get(userId);
   const params = new URLSearchParams({
