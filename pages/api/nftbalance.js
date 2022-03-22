@@ -28,10 +28,12 @@ export default async function handler(req, res) {
   const nftBalance = nftBalanceResponse.map((nft) => {
     const name = nft.name;
     const tokenAddress = nft.tokenAddress;
+    const attributes = nft.attributes
     return {
       id: nft.id,
       name,
       tokenAddress,
+      attributes,
     };
   });
 
